@@ -13,11 +13,12 @@ I am not a professional cybersecurity expert but someone who is passionate about
 - **Queue-Based Exploration**: Ensures efficient processing of all discovered relays while avoiding duplicates.
 - **Live Updates**: Displays the currently processed IP and the queue length in real-time.
 - **Exploration Statistics**: Summarizes the total relays discovered and visited at the end of the scan.
+- **Output File Support**: Saves all discovered IP addresses to an external file for further analysis.
 
 ---
 
 ## **Prerequisites**
-Before using the Panchan Miner Relay Explorer, ensure you have the following:
+Before using ChanGather, ensure you have the following:
 
 ### **Required Software**
 - **Python 3.8+**
@@ -51,23 +52,24 @@ No external dependencies are required.
 ### **Command**
 Run the tool with the following command:
 ```bash
-> ./changather.py <IP> <PORT>
+> ./changather.py <IP> <PORT> <OUTPUT_FILE>
 ```
 
 ### **Parameters**
 - `<IP>`: The starting IP address of the suspected Panchan relay (e.g., `192.168.1.100`).
 - `<PORT>`: The port number to connect to (e.g., `8080`).
+- `<OUTPUT_FILE>`: The file where all discovered IPs will be saved (e.g., `relays.txt`).
 
 ### **Example**
 ```bash
-> ./changather.py 192.168.1.100 8080
+> ./changather.py 192.168.1.100 8080 relays.txt
 ```
 
 ### **Output**
 - **Real-Time Logs**: Displays the last processed IP address and the queue length during the scan.
 - **Final Statistics**: Provides a summary of:
   - Total unique IPs visited.
-  - List of all extracted relay IPs.
+  - Location of the output file containing all extracted relay IPs.
 
 ---
 
@@ -75,12 +77,13 @@ Run the tool with the following command:
 1. **Initial Connection**: The tool connects to the specified IP and port using a TCP socket.
 2. **Data Analysis**: If the response contains the keyword `pan-chan`, the tool extracts all IP addresses from the response.
 3. **Recursive Discovery**: New IPs are added to a queue and recursively explored, mapping the relay network.
-4. **Completion**: The scan finishes when the queue is empty, and a summary of discovered relays is provided.
+4. **Output Saving**: All extracted IPs are written to the specified output file.
+5. **Completion**: The scan finishes when the queue is empty, and a summary of discovered relays is provided.
 
 ---
 
 ## **Disclaimer**
-Panchan Miner Relay Explorer is designed **for educational and research purposes only**. I am not responsible for any misuse or illegal activities conducted with this tool. Always ensure compliance with your local laws regarding network analysis and cybersecurity research.
+ChanGather is designed **for educational and research purposes only**. I am not responsible for any misuse or illegal activities conducted with this tool. Always ensure compliance with your local laws regarding network analysis and cybersecurity research.
 
 ---
 
